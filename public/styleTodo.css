@@ -1,0 +1,54 @@
+.container{
+    background-color: #FFCCE1;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+.cards{
+    padding-left: 20px;
+    padding-right:20px;
+    /* background-color: #e9b0c8; */
+    background-color: rgba(255, 255, 255, 0.327);
+    /* border: 1px solid; */
+    border-radius: 20px;
+    box-shadow: 5px 10px 10px #888888 ;
+    width: 300px;
+    
+    /* backdrop-filter: blur(11px); */
+
+}
+input{
+    width: 100%;
+    padding: 10px;
+    /* padding-bottom: ; */
+    height: 25px;
+    border-radius: 5px;
+    border: 0px;
+    background-color: rgba(255, 255, 255, 0.301);
+    backdrop-filter: blur(5px);
+}
+
+::placeholder {
+    color: rgba(0, 0, 0, 0.452);
+    opacity: 1; /* Firefox */
+  }
+
+#AddTodo{
+    width: 100%;
+    height: 30px;
+    color: white;
+    background-color: #E195AB;
+    border-radius: 5px;
+    border: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /* margin-bottom: 2px; */
+    
+}
+
+.cards h2 , h5 ,p {
+    color: rgb(109, 85, 157);
+}

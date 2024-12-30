@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>To-Do</title>
+        <meta charset="utf-8">
+        <meta name = "viewport" content="width=device-width">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    </head>
+    <body style="margin: 0px;">
+        <div class = "container">
+            <div class = "cards">
+                <h2 style="text-align: left">Signup</h4>
+                <h5 style="margin-bottom: 2px;">Username</h5>
+                <input id = "Username" type = "text"></input>
+                <h5 style="margin-bottom: 2px;">Passward</h5>
+                <input id = "pass" type="text"></input>
+                <button id = "Signup" onclick="signupHandler()">Signup</button>
+                <span>
+                <!-- <h5 style="">Already have an account?</h5>
+                <h5 style="">Already have an account?</h5> -->
+                <div style="display: flex;">
+                    <p>Already have an account? </p>
+                    <a style="padding-top: 16px; padding-left: 2px ; color: rgb(217, 75, 75);" href= "/signin"> Sign In</a>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="script.js"></script>
+</html>
