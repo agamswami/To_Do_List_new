@@ -11,9 +11,13 @@
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "nodemon": "nodemon"
+    "nodemon": "nodemon",
+    "start": "concurrently \"npm run nodemon ./routes/server.js\" \"npm run nodemon ./routes/front-endServer.js\""
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
 }
