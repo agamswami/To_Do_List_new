@@ -34,7 +34,7 @@ app.post("/signup",function(req , res){
     console.log(typeof(user));
     if(typeof(user) === "undefined"){   // user name is available to be given
         users.push({id : givenid , pass : givenpass, data : []});
-        const token = jwt.sign({id : givenid , pass : givenpass} , JWT_SECRET);
+        const token = jwt.sign({id : givenid} , JWT_SECRET);
 
         res.json({
             token : token
@@ -48,7 +48,9 @@ app.post("/signup",function(req , res){
 });
 
 function auth(req , res , next){
-    const token = req.header.authorization;
+    const token = req.headers.authorization;
+    console.log(token);
+    console.log(typeof(token));
     if(token){
         jwt.verify(token,JWT_SECRET ,(err , decoded) =>{
             if(err){
@@ -57,7 +59,7 @@ function auth(req , res , next){
                 });
             }
             else{
-                res.id = decoded;
+                req.body.id = decoded.id;
                 next();
             }
         });
@@ -86,8 +88,8 @@ app.post("/signin", function (req , res){
     console.log(typeof(user));
     if(user){   // user name is available to be given
         // users.push({id : givenid , pass : givenpass});
-        const token = jwt.sign({id : givenid , pass : givenpass} , JWT_SECRET);
-
+        const token = jwt.sign({id : givenid} , JWT_SECRET);
+        console.log(token);
         res.json({
             token : token
         });
@@ -100,9 +102,49 @@ app.post("/signin", function (req , res){
 })
 
 
-app.post("/add",auth,function (req , res){
-    
+app.post("/addTodo",auth,function (req , res){
+    const id = req.body.id;
+    const toAdd = req.body.toDo;
+    console.log(`/addTodo`);
+    console.log(id);
+    console.log(toAdd);
+    let userobj = users.find((user) => {
+        if(id === user.id){
+            return true;
+        }
+        else{
+            return false;
+        }
+    });
+
+    if(userobj){
+        userobj.data.push(toAdd);
+        res.send();
+    }
+    else{
+        console.log("user not found");
+        res.status(500).send({
+            message : "user not found"
+        })
+    }
+
 });
+
+app.get("/getlist" , auth , function(req , res){
+    const id = req.body.id;
+    let userobj = users.find((user) => {
+        if(id === user.id){
+            return true;
+        }
+        else{
+            return false;
+        }
+    });
+
+    res.json({
+        userdata : userobj.data
+    })
+})
 
 
 app.listen(3000);
