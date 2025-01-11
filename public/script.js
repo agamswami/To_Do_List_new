@@ -1,4 +1,4 @@
-let toDoList = ["hello","my name"];
+let toDoList = [];
 
 async function getdataForuser(){
     const id = localStorage.getItem("id")
@@ -9,7 +9,7 @@ async function getdataForuser(){
             {
                 headers: {
                     'authorization': token,
-                    'Content-Type' : 'application/json'
+                    // 'Content-Type' : 'application/json'
                 }
             }
         );
@@ -57,7 +57,7 @@ async function add(){
             {
                 headers: {
                     'authorization': token,
-                    'Content-Type' : 'application/json'
+                    // 'Content-Type' : 'application/json'
                 }
             }
         );
@@ -77,7 +77,9 @@ async function signupHandler() {
     const pass = document.getElementById("pass").value;
     // let token;
     try{
+        console.log("test1");
         const response = await axios.post("http://localhost:3000/signup",{id : username , pass : pass});
+        console.log("test1end");
         const token = response.data.token;
         console.log(response.data);
         localStorage.setItem("token" ,token);
